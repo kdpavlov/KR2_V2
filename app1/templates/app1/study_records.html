@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Образовательная программа{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Я и моя образовательная программа</h1>
+
+    <form method="post" class="mb-4">
+        {% csrf_token %}
+        <div class="row g-3">
+            <div class="col-md-4">{{ form.name.label_tag }}{{ form.name }}</div>
+            <div class="col-md-4">{{ form.course.label_tag }}{{ form.course }}</div>
+            <div class="col-md-2">{{ form.score.label_tag }}{{ form.score }}</div>
+            <div class="col-md-2 align-self-end">
+                <button type="submit" class="btn btn-primary w-100">Добавить запись</button>
+            </div>
+        </div>
+    </form>
+
+    <hr>
+
+    <h3>Фильтр и сортировка</h3>
+    <form method="get" class="row g-3 align-items-center mb-3">
+        <div class="col-auto">
+            <label for="min_score" class="col-form-label">Минимальный балл:</label>
+        </div>
+        <div class="col-auto">
+            <input type="number" name="min_score" id="min_score" class="form-control" value="{{ min_score }}">
+        </div>
+        <div class="col-auto">
+            <label for="sort_by" class="col-form-label">Сортировать по:</label>
+        </div>
+        <div class="col-auto">
+            <select name="sort_by" id="sort_by" class="form-select">
+                <option value="date" {% if sort_by == 'date' %}selected{% endif %}>Дате</option>
+                <option value="name" {% if sort_by == 'name' %}selected{% endif %}>Имени</option>
+                <option value="course" {% if sort_by == 'course' %}selected{% endif %}>Курсу</option>
+                <option value="score" {% if sort_by == 'score' %}selected{% endif %}>Баллу</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-secondary">Применить</button>
+        </div>
+    </form>
+
+    <h3>Данные</h3>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Имя</th>
+                <th>Курс</th>
+                <th>Баллы</th>
+                <th>Дата добавления</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+                <tr>
+                    <td>{{ record.name }}</td>
+                    <td>{{ record.course }}</td>
+                    <td>{{ record.score }}</td>
+                    <td>{{ record.date }}</td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="4" class="text-center">Нет данных</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h4>Средний балл: {{ avg_score|default:"нет данных" }}</h4>
+</div>
+{% endblock %}
