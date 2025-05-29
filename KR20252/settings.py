@@ -25,10 +25,10 @@ MEDIA_ROOT = os.path.join (BASE_DIR, 'Media')
 SECRET_KEY = 'django-insecure-xd*+#m4e9^e72cqglkq@y@+lwq&5ee38t6reo!kc_s@2mwu6_8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['kdpavlov.pythonanywhere.com']
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+ALLOWED_HOSTS = []
+
 
 # Application definition
 
