@@ -12,7 +12,7 @@ class Page(models.Model):
 
 class Student(models.Model):
         full_name = models.CharField("ФИО", max_length=200)
-        photo = models.ImageField("Фото", upload_to='students/')
+        photo = models.ImageField("Фото", upload_to='')
         email = models.EmailField("Email")
         phone = models.CharField("Телефон", max_length=20)
         score = models.PositiveIntegerField("Баллы", default=0)
