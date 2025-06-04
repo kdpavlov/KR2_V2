@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Менеджмент{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Менеджмент на моей образовательной программе</h1>
+    <h2>Академический руководитель</h2>
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <img src="{{ management.leader.photo.url }}" alt="{{ management.leader.full_name }}" class="img-fluid rounded" style="height: 200px; width:200px; object-fit: cover;">
+        </div>
+            <h3>{{ management.leader.full_name }}</h3>
+            <p><strong>Email:</strong> {{ management.leader.email }}</p>
+            <p><strong>Телефон:</strong> {{ management.leader.phone }}</p>
+    </div>
+
+    <h2>Менеджеры</h2>
+    <div class="row">
+        {% for manager in management.managers.all %}
+        <div class="col-md-4">
+            <img src="{{ manager.photo.url }}" alt="{{ manager.full_name }}" class="img-fluid rounded" style="height: 200px; object-fit: cover;">
+            <h3>{{ manager.full_name }}</h3>
+            <p><strong>Email:</strong> {{ manager.email }}</p>
+             <p><strong>Телефон:</strong> {{ manager.phone }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

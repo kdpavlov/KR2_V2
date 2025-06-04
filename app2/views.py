@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Page, Student
+from .models import Page, Student, Management, Program, Person
 # Create your views here.
 def page_detail(request, id):
     page = get_object_or_404(Page, pk=id)
@@ -16,4 +16,15 @@ def students_list(request):
     students = students.order_by('-score')
 
     return render(request, 'app2/students_list.html', {'students': students, 'search': search, 'pages': pages,})
+def my_page(request):
+    person = Person.objects.first()
+    return render(request, 'app2/mypage.html', {'person': person})
 
+def program_page(request):
+    program = Program.objects.first()
+    return render(request, 'app2/program.html', {'program': program})
+
+def management_view(request):
+    management = Management.objects.first()
+    context = {'management': management,}
+    return render(request, 'app2/management_page.html', context)

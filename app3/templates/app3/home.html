@@ -1,0 +1,47 @@
+{% extends 'shop_template.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h1>Добро пожаловать в SportShop!</h1>
+<p>Мы предлагаем высококачественную спортивную атрибутику по доступным ценам.</p>
+    <h2>Наш ассортимент:</h2>
+<ol>
+    <li><strong>Футбол</strong>
+        <ul>
+            <li>Бутсы</li>
+            <li>Футбольные мячи</li>
+            <li>Экипировка</li>
+            <li>Защитные аксессуары</li>
+        </ul>
+    </li>
+    <li><strong>Баскетбол</strong>
+        <ul>
+            <li>Кроссовки</li>
+            <li>Баскетбольные мячи</li>
+            <li>Форма</li>
+            <li>Кольца и щиты</li>
+        </ul>
+    </li>
+    <li><strong>Хоккей</strong>
+        <ul>
+            <li>Коньки</li>
+            <li>Шайбы</li>
+            <li>Клюшки</li>
+            <li>Амуниция</li>
+        </ul>
+    </li>
+</ol>
+
+<h2>Изучите магазин:</h2>
+<a href="#features" class="btn btn-warning">Перейти к особенностям</a>
+    <a href="{% url 'app3_catalog' %}" class="btn btn-primary">Перейти в каталог</a>
+<div style="height: 100px;"></div>
+
+<h2 id="features">Почему выбирают нас?</h2>
+<ul>
+    <li>Оригинальная продукция от ведущих брендов</li>
+    <li>Быстрая доставка по всей России</li>
+    <li>Гарантия качества</li>
+</ul>
+
+</div>
+{% endblock %}

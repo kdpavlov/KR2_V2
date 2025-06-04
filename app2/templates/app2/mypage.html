@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Я{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Я</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ person.photo.url }}" alt="{{ person.full_name }}" class="img-fluid rounded" style="height: 200px; object-fit: cover;">
+        </div>
+        <div class="col-md-8">
+            <h2>{{ person.full_name }}</h2>
+            <p><strong>Email:</strong> {{ person.email }}</p>
+            <p><strong>Телефон:</strong> {{ person.phone }}</p>
+            <h3>Резюме</h3>
+            <p>{{ person.resume|safe }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -15,13 +15,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                     <li class="nav-item"><a class="nav-link" href="{% url 'study_records' %}">Приложение 1</a></li>
-                     <li class="nav-item"><a class="nav-link" href="{% url 'students_list' %}">Сокурсники</a></li>
-                     {% for page in pages %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'page_detail' id=page.id %}">{{ page.title }}</a>
-                        </li>
-                    {% endfor %}
+                     <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'study_records' %}">Приложение 1</a></li>
+                     <li class="nav-item"><a class="nav-link {% if request.path == '/students/' %}active{% endif %}" href="{% url 'students_list' %}">Сокурсники</a></li>
+                     <li class="nav-item"><a class="nav-link {% if request.path == '/management_page/' %}active{% endif %}" href="{% url 'management' %}">Менеджмент</a></li>
+                     <li class="nav-item"><a class="nav-link {% if request.path == '/my_page/' %}active{% endif %} " href="{% url 'mypage' %}">Я</a></li>
+                     <li class="nav-item"><a class="nav-link {% if request.path == '/program/' %}active{% endif %}" href="{% url 'program' %}">Моя образовательная программа</a></li>
+                     <li class="nav-item"><a class="nav-link {% if request.path == '/shop/' %}active{% endif %}" href="{% url 'app3_home' %}">Магазин</a></li>
                 </ul>
             </div>
         </div>

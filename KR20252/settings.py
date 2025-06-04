@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-xd*+#m4e9^e72cqglkq@y@+lwq&5ee38t6reo!kc_s@2mwu6_8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kdpavlov.pythonanywhere.com', 'www.kdpavlov.pythonanywhere.com']
+ALLOWED_HOSTS = ['kdpavlov.pythonanywhere.com', 'www.kdpavlov.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
     'app1',
     'app2',
+    'app3'
 ]
 
 MIDDLEWARE = [

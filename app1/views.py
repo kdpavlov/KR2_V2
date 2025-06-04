@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import StudyRecord
 from .forms import StudyRecordForm
-from django.db.models import Avg
+from django.db.models import Avg,Max,Min,Sum
 from app2.models import Page
 # Create your views here.
 
@@ -24,12 +24,21 @@ def study_records(request):
         except ValueError:
             min_score_int = None
     if sort_by in ['name', 'course', 'score', 'date']:
-        records = records.order_by(sort_by)
+        if sort_by == 'score':
+            records = records.order_by(f'-{sort_by}')
+        else:
+            records = records.order_by(sort_by)
 
     avg_score = records.aggregate(Avg('score'))['score__avg']
 
     pages = Page.objects.all()
 
+    stats = records.aggregate(
+        avg_score=Avg('score'),
+        max_score=Max('score'),
+        min_score=Min('score'),
+        sum_score=Sum('score')
+    )
     context = {
         'form': form,
         'records': records,
@@ -37,6 +46,7 @@ def study_records(request):
         'min_score': min_score,
         'sort_by': sort_by,
         'pages': pages,
+        'stats': stats
     }
     return render(request, 'app1/study_records.html', context)
 

@@ -10,3 +10,8 @@ class StudyRecordForm(forms.ModelForm):
             'course': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Название курса'}),
             'score': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Баллы'}),
         }
+        labels = {
+            'name': 'Имя',
+            'course': 'Курс',
+            'score': 'Баллы'
+        }
